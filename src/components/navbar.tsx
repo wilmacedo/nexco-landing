@@ -1,8 +1,14 @@
-export function Navbar() {
-  function currentHash() {
-    const { hash } = location;
+"use client";
 
-    if (hash.length === 0) return "home";
+import { usePathname } from "next/navigation";
+
+export function Navbar() {
+  const pathname = usePathname();
+
+  function currentHash() {
+    const hash = pathname.split("#")[1];
+
+    if (!hash || hash.length === 0) return "home";
 
     return hash.replace("#", "");
   }
