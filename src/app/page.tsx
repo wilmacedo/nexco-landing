@@ -10,14 +10,12 @@ import {
   MoveUpRight,
 } from "lucide-react";
 import Image from "next/image";
-import { Navbar } from "../components/navbar";
+import { Fragment } from "react";
 
-export default function Home() {
+export default async function Home() {
   return (
-    <>
-      <Navbar />
-
-      <section className="grid grid-cols-2 w-[calc(100vw-1rem))] h-[calc(100vh-4.16rem)] lg:px-12 lg:gap-4">
+    <Fragment>
+      <section className="grid grid-cols-2 w-[calc(100vw-1rem))] h-full lg:px-12 lg:gap-4">
         <div className="mt-12">
           <div className="w-fit bg-gray-100 rounded-3xl px-5 py-0.5">
             <span className="text-sm">FINANCE</span>
@@ -218,6 +216,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </>
+    </Fragment>
   );
 }
