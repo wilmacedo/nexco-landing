@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { dashboardUrl } from "@/config";
 import { stripe } from "@/lib/stripe";
 import {
   ArrowDown,
@@ -23,26 +24,31 @@ export default async function Home() {
 
   return (
     <Fragment>
-      <div className="w-screen h-[calc(100vh-4rem)] inline-flex items-center justify-center px-4 md:px-16 overflow-x-hidden">
-        <section className="w-full h-fit my-auto grid grid-cols-1 lg:grid-cols-2 lg:gap-4 lg:max-w-7xl">
+      <div className="w-screen md:h-[calc(100vh-4rem)] inline-flex items-center justify-center px-4 md:px-16 overflow-x-hidden">
+        <section className="mt-4 w-full h-fit my-auto grid grid-cols-1 md:mt-12 lg:grid-cols-2 lg:gap-4 lg:max-w-7xl">
           <div>
-            <div className="w-fit bg-muted rounded-2xl px-5 py-0.5">
+            <div className="w-fit hidden bg-muted rounded-2xl px-5 py-0.5 md:block">
               <span className="text-sm">FINANCE</span>
             </div>
 
-            <div className="mt-4">
-              <h1 className="text-6xl">Simplificado e</h1>
-              <h1 className="text-6xl inline-flex gap-2">
+            <div className="mt-4 text-center md:text-start">
+              <h1 className="text-4xl md:text-6xl">Simplificado e</h1>
+              <h1 className="text-4xl md:text-6xl inline-flex gap-2">
                 <div className="relative">
                   Eficaz
                   <div className="-left-[0.5rem] top-0 absolute w-[calc(100%+1rem)] h-full bg-[#a5dc48] opacity-30 rounded-full" />
                 </div>
-                na sua gestão
+                na sua <span className="hidden sm:block">gestão</span>
               </h1>
-              <div className="inline-flex gap-4 items-center">
-                <h1 className="text-6xl">Financeira</h1>
-                <button className="mt-2 px-5 py-2 rounded-full border border-neutral-200 inline-flex items-center justify-between gap-8 hover:border-neutral-300">
-                  <Link href="/register" className="text-lg">
+              <div className="flex flex-col md:flex-row gap-4 items-center">
+                <h1 className="inline-flex gap-2 text-4xl md:text-6xl">
+                  <span className="block sm:hidden">gestão</span>Financeira
+                </h1>
+                <button className="w-full mt-2 px-5 py-2 rounded-full border border-neutral-200 inline-flex items-center justify-between gap-8 hover:border-neutral-300 md:w-fit">
+                  <Link
+                    href={dashboardUrl + "/register"}
+                    className="text-base md:text-lg"
+                  >
                     Abrir conta
                   </Link>
                   <MoveUpRight strokeWidth={1.5} />
@@ -58,7 +64,7 @@ export default async function Home() {
             </div>
 
             <div className="flex flex-col">
-              <div className="w-fit pb-2 inline-flex gap-6 items-center border-b border-neutral-200">
+              <div className="w-full lg:w-fit pb-2 inline-flex flex-wrap gap-3 md:gap-6 items-center border-b border-neutral-200">
                 <div className="inline-flex gap-2 items-center">
                   <div className="p-1 bg-[#D9E8B7] rounded-full">
                     <Check size={14} />
@@ -86,7 +92,8 @@ export default async function Home() {
               </span>
             </div>
           </div>
-          <div className="inline-flex gap-2">
+
+          <div className="mt-16 lg:mt-0 flex flex-col gap-2 md:flex-row">
             <div className="my-auto">
               <div className="pt-12 p-4 bg-[#F0F1EA] rounded-lg flex flex-col relative">
                 <div className="absolute right-8 -top-12 border-4 border-[#FCFDF8] rounded-full">
@@ -236,9 +243,10 @@ export default async function Home() {
           </div>
         </section>
       </div>
+
       <div
         id="prices"
-        className="pt-36 lg:pt-16 w-screen h-screen flex flex-row justify-center px-4 md:px-16"
+        className="pt-36 md:pt-16 w-screen h-screen flex flex-row justify-center px-4 md:px-16"
       >
         <section className="text-center w-full lg:max-w-7xl">
           <h1 className="text-3xl md:text-5xl">Planos para o seu</h1>
@@ -254,11 +262,11 @@ export default async function Home() {
             Preços flexíveis para cada tipo de aplicação.
           </p>
 
-          <div className="mt-12 inline-flex items-center gap-6 text-start">
+          <div className="mt-12 flex flex-col items-center justify-center gap-6 text-start md:flex-row">
             {prices.data.reverse().map((item, index) => (
               <div
                 key={index}
-                className="group p-4 border rounded-lg even:scale-110 even:bg-[#D9E8B7]"
+                className="group w-full p-4 border rounded-lg md:w-fit md:even:scale-110 even:bg-[#D9E8B7]"
               >
                 <p className="font-semibold">
                   {(item.product as Stripe.Product).name}
@@ -299,8 +307,9 @@ export default async function Home() {
                 <Button
                   className="mt-4 w-full"
                   variant={index % 2 === 1 ? "secondary" : "default"}
+                  asChild
                 >
-                  Comprar agora
+                  <Link href={dashboardUrl + "/billing"}>Comprar agora</Link>
                 </Button>
               </div>
             ))}

@@ -1,5 +1,6 @@
 "use client";
 
+import { dashboardUrl } from "@/config";
 import { tabs } from "@/config/navbar";
 import Link from "next/link";
 import { Logo } from "./logo";
@@ -22,12 +23,12 @@ export function Navbar() {
         </div>
         <div className="inline-flex items-center gap-2">
           <Button variant="ghost" asChild>
-            <Link href="/signin">Entrar</Link>
+            <Link href={dashboardUrl + "/sigin"}>Entrar</Link>
           </Button>
 
           <Button asChild>
             <Link
-              href="/register"
+              href={dashboardUrl + "/register"}
               className="px-5 py-1.5 text-sm bg-[#D9E8B7] rounded-3xl"
             >
               Começar
