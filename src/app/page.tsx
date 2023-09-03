@@ -16,6 +16,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
 import Stripe from "stripe";
+import { twMerge } from "tailwind-merge";
 
 export default async function Home() {
   const prices = await stripe.prices.list({
@@ -24,8 +25,13 @@ export default async function Home() {
 
   return (
     <Fragment>
-      <div className="w-screen md:h-[calc(100vh-4rem)] inline-flex items-center justify-center px-4 md:px-16 overflow-x-hidden">
-        <section className="mt-4 w-full h-fit my-auto grid grid-cols-1 md:mt-12 lg:grid-cols-2 lg:gap-4 lg:max-w-7xl">
+      <div
+        className={twMerge(
+          "inline-flex items-center justify-center px-4",
+          "md:w-screen md:px-16 lg:h-[calc(100vh-4rem)]"
+        )}
+      >
+        <section className="w-full my-auto grid grid-cols-1 lg:grid-cols-2 lg:gap-4 lg:max-w-7xl">
           <div>
             <div className="w-fit hidden bg-muted rounded-2xl px-5 py-0.5 md:block">
               <span className="text-sm">FINANCE</span>
@@ -44,7 +50,7 @@ export default async function Home() {
                 <h1 className="inline-flex gap-2 text-4xl md:text-6xl">
                   <span className="block sm:hidden">gestão</span>Financeira
                 </h1>
-                <button className="w-full mt-2 px-5 py-2 rounded-full border border-neutral-200 inline-flex items-center justify-between gap-8 hover:border-neutral-300 md:w-fit">
+                <button className="mt-2 px-5 py-2 rounded-full border border-neutral-200 inline-flex items-center justify-between gap-8 hover:border-neutral-300">
                   <Link
                     href={dashboardUrl + "/register"}
                     className="text-base md:text-lg"
@@ -56,7 +62,7 @@ export default async function Home() {
               </div>
             </div>
 
-            <div className="my-12 font-light text-lg lg:max-w-md">
+            <div className="my-12 font-light text-base md:text-lg lg:max-w-md">
               <span>
                 Simplifique e otimize sua gestão financeira com nossa solução
                 fácil de usar, abrindo caminho para um futuro próspero e seguro.
@@ -69,7 +75,7 @@ export default async function Home() {
                   <div className="p-1 bg-[#D9E8B7] rounded-full">
                     <Check size={14} />
                   </div>
-                  <span className="uppercase text-sm">
+                  <span className="uppercase text-xs md:text-sm">
                     atualizações semanais
                   </span>
                 </div>
@@ -77,16 +83,20 @@ export default async function Home() {
                   <div className="p-1 bg-[#D9E8B7] rounded-full">
                     <Check size={14} />
                   </div>
-                  <span className="uppercase text-sm">seção discovery</span>
+                  <span className="uppercase text-xs md:text-sm">
+                    seção discovery
+                  </span>
                 </div>
                 <div className="inline-flex gap-2 items-center">
                   <div className="p-1 bg-[#D9E8B7] rounded-full">
                     <Check size={14} />
                   </div>
-                  <span className="uppercase text-sm">teste grátis</span>
+                  <span className="uppercase text-xs md:text-sm">
+                    teste grátis
+                  </span>
                 </div>
               </div>
-              <span className="mt-2 text-sm text-muted-foreground lg:max-w-sm">
+              <span className="mt-2 text-xs md:text-sm text-muted-foreground lg:max-w-sm">
                 Todos os dados são coletados em portais confiáveis e processados
                 por blockchain.
               </span>
@@ -114,7 +124,7 @@ export default async function Home() {
                 </div>
 
                 <div className="mt-4 inline-flex items-end justify-between">
-                  <h3 className="text-5xl">09:59</h3>
+                  <h3 className="text-4xl md:text-5xl">09:59</h3>
                   <span className="text-sm text-neutral-400">Saturday</span>
                 </div>
                 <div className="my-2 h-[2px] bg-black w-full" />
@@ -122,7 +132,7 @@ export default async function Home() {
                 <div className="inline-flex gap-2">
                   <div className="border border-neutral-300 rounded-lg p-2">
                     <div className="w-full inline-flex items-center justify-between">
-                      <span className="text-xs">Messages</span>
+                      <span className=" text-xs">Messages</span>
                       <ArrowUpRight strokeWidth={1.75} size={16} />
                     </div>
 
@@ -155,7 +165,9 @@ export default async function Home() {
                       />
                     </div>
 
-                    <span className="mt-4 mb-1 text-xl">$121.32</span>
+                    <span className="mt-4 mb-1 text-lg md:text-xl">
+                      $121.32
+                    </span>
                     <span className="text-xs text-neutral-400">
                       3 transfers
                     </span>
@@ -171,7 +183,7 @@ export default async function Home() {
                       />
                     </div>
 
-                    <span className="mt-4 text-xl">$121.32</span>
+                    <span className="mt-4 text-lg md:text-xl">$121.32</span>
                     <span className="text-xs text-neutral-400">
                       3 transfers
                     </span>
@@ -215,7 +227,7 @@ export default async function Home() {
                   <MoreHorizontal />
                 </div>
                 <div>
-                  <h3 className="text-5xl font-medium">+116,42%</h3>
+                  <h3 className="text-4xl md:text-5xl font-medium">+116,42%</h3>
                   <p className="text-xs font-light text-neutral-700 lg:max-w-[12rem]">
                     Maximaze your financial potential with our intelligent
                     investment solutions
@@ -230,7 +242,9 @@ export default async function Home() {
                   <MoreHorizontal />
                 </div>
                 <div className="w-full inline-flex items-end justify-between">
-                  <h3 className="text-5xl font-medium">10,569.50</h3>
+                  <h3 className="text-4xl md:text-5xl font-medium">
+                    10,569.50
+                  </h3>
                   <span className="text-sm text-neutral-400">USD</span>
                 </div>
                 <div className="my-2 h-[2px] bg-black w-full" />
@@ -246,7 +260,7 @@ export default async function Home() {
 
       <div
         id="prices"
-        className="pt-36 md:pt-16 w-screen h-screen flex flex-row justify-center px-4 md:px-16"
+        className="pt-36 md:pt-16 md:w-screen h-screen flex flex-row justify-center px-4 md:px-16"
       >
         <section className="text-center w-full lg:max-w-7xl">
           <h1 className="text-3xl md:text-5xl">Planos para o seu</h1>

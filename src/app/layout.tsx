@@ -21,7 +21,7 @@ export default function RootLayout({
         <main id="home">
           <Navbar />
 
-          <div className="pt-36 md:pt-16">{children}</div>
+          <div className="pt-36 md:pt-16 md:overflow-x-hidden">{children}</div>
         </main>
       </body>
     </html>
