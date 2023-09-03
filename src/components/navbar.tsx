@@ -2,15 +2,12 @@
 
 import { tabs } from "@/config/navbar";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Logo } from "./logo";
 import { Button } from "./ui/button";
 
 export function Navbar() {
-  const pathname = usePathname();
-
   return (
-    <nav className="fixed w-screen flex items-center justify-center px-4 lg:px-16">
+    <nav className="fixed z-20 bg-background w-screen flex items-center justify-center px-4 lg:px-16">
       <div className="py-4 w-full flex flex-col gap-4 items-center justify-between md:gap-0 md:flex-row lg:max-w-7xl">
         <Link href={"/"} className="inline-flex items-center gap-2">
           <Logo />
