@@ -323,7 +323,9 @@ export default async function Home() {
                   variant={index % 2 === 1 ? "secondary" : "default"}
                   asChild
                 >
-                  <Link href={dashboardUrl + "/billing"}>Comprar agora</Link>
+                  <Link href={dashboardUrl + "/billing?id=" + item.id}>
+                    Comprar agora
+                  </Link>
                 </Button>
               </div>
             ))}
