@@ -102,6 +102,11 @@ export default async function Home() {
               </span>
             </div>
           </div>
+          {/* <div className="flex items-center justify-center">
+            <div>
+              <div className="border border-neutral-300 rounded-md">ola</div>
+            </div>
+          </div> */}
 
           <div className="mt-16 lg:mt-0 flex flex-col gap-2 md:flex-row">
             <div className="my-auto">

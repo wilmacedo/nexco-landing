@@ -23,7 +23,7 @@ export function Navbar() {
         </div>
         <div className="inline-flex items-center gap-2">
           <Button variant="ghost" asChild>
-            <Link href={dashboardUrl + "/sigin"}>Entrar</Link>
+            <Link href={dashboardUrl + "/login"}>Entrar</Link>
           </Button>
 
           <Button asChild>
